@@ -21,7 +21,6 @@ def eprime(num):
             if num % div == 0:
                 return False
         return True
-
 p_max = int(input("Enter the number prime numbers to calculate the sum ?"))
 
 sum = 0

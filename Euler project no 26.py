@@ -21,5 +21,10 @@ def f(L):
     if d-1 == period: break
   return d
   
+start_time = time.time()
+
 L = int(input('The longest recurring cycle for 1/d where d <'))
 print ("is", f(L))
+
+elapsed_time = time.time() - start_time
+print ("Elapse time: {:.2f} sec".format(elapsed_time))
