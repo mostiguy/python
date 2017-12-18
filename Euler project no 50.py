@@ -18,27 +18,34 @@ from math_functions import is_prime
 
 start_time = time.time()
 
-
-p_list_tmp = []
+target = 1000000
+prime = prime_sieve(int(target/2))
+l_prime = len(prime)
+max_psum = 0
+max_consecutive = 0
+max_prime = 0
 p_list = []
-prime = prime_sieve(1000)
-s = 0
-maxsum = 100
 
-for j in rang (1,maxsum/2)
-    p_list_tmp.clear
-    for i in  prime:
-        s += i
-        if is_prime(s):
-            p_list.append(i)
-            s_last = s
-            print("List",p_list," Sum: ",s_last)
-        else :
+start = 0
+# Build a list of prime sums and the number of consecutive prime
+for start in range(0,int(l_prime/2)):
+    p_sum = 0
+    p_list.clear()
+    for a in range(start,int(l_prime)):
+        p_sum += prime[a]
+        p_list.append(p_sum)
+        c = a+1-start
+        p_list.append(c)
+        if (is_prime(p_sum) and (p_sum < target)):
+            if (c > max_consecutive):
+                    max_consecutive = c
+                    max_psum = p_sum
+
+        if p_sum > target:
             break
-        
-    p
     
-print ("The sum of consecutive primes below 1000 is: ",s_last,"\nThe list is",p_list)
+#print("Prime sum list and consecutive prime",p_list) 
+print("Prime sum and consecutive prime",max_psum,max_consecutive)
 
 
 elapsed_time = time.time() - start_time
